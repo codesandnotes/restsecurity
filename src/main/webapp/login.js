@@ -3,18 +3,17 @@ jQuery(document).ready(function ($) {
 		event.preventDefault();
 		var data = 'username=' + $('#username').val() + '&password=' + $('#password').val();
 		$.ajax({
-			crossDomain: true,
 			data: data,
 			timeout: 1000,
 			type: 'POST',
 			url: '/login'
 
 		}).done(function(data, textStatus, jqXHR) {
-			var preLoginInfo = JSON.parse($.cookie('dashboard.pre.login.request'));
+			var preLoginInfo = JSON.parse($.cookie('restsecurity.pre.login.request'));
 			window.location = preLoginInfo.url;
 
 		}).fail(function(jqXHR, textStatus, errorThrown) {
-			alert('Houston, we have a problem!');
+			alert('Booh! Wrong credentials, try again!');
 		});
 	});
 });

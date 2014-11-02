@@ -9,7 +9,7 @@ jQuery(document).ready(function($) {
 	}).fail(function (jqXHR, textStatus, errorThrown) {
 		if (jqXHR.status === 401) { // HTTP Status 401: Unauthorized
 			var preLoginInfo = JSON.stringify({method: 'GET', url: '/'});
-			$.cookie('dashboard.pre.login.request', preLoginInfo);
+			$.cookie('restsecurity.pre.login.request', preLoginInfo);
 			window.location = '/login.html';
 
 		} else {

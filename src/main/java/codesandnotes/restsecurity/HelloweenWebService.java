@@ -14,7 +14,7 @@ import java.security.Principal;
 public class HelloweenWebService {
 
 	@RequestMapping(value = "/hello", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<HelloweenResponse> save(Principal principal) {
+	public ResponseEntity<HelloweenResponse> hello(Principal principal) {
 
 		return new ResponseEntity<HelloweenResponse>(
 				new HelloweenResponse("Happy Halloween, " + principal.getName() + "!"), HttpStatus.OK);
