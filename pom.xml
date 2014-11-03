@@ -41,5 +41,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>com.allanditzel</groupId>
+			<artifactId>spring-security-csrf-token-filter</artifactId>
+			<version>1.1</version>
+		</dependency>
 	</dependencies>
 </project>
