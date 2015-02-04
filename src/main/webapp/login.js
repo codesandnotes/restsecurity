@@ -1,20 +1,29 @@
 jQuery(document).ready(function ($) {
 	$('#loginform').submit(function (event) {
 		event.preventDefault();
-		var preLoginInfo = JSON.parse($.cookie('restsecurity.pre.login.request'));
+
+		showMeYourCookies('At loginform submission');
+
+		var cookie = JSON.parse($.cookie('helloween'));
 		var data = 'username=' + $('#username').val() + '&password=' + $('#password').val();
 		$.ajax({
 			data: data,
-			headers: {'X-CSRF-TOKEN': preLoginInfo.csrf},
+			headers: {'X-CSRF-TOKEN': cookie.csrf},
 			timeout: 1000,
 			type: 'POST',
 			url: '/login'
 
 		}).done(function(data, textStatus, jqXHR) {
-			window.location = preLoginInfo.url;
+			showMeYourJqXHR('When loginform is done', jqXHR);
+			showMeYourCookies('When loginform is done');
+
+			window.location = cookie.url;
 
 		}).fail(function(jqXHR, textStatus, errorThrown) {
-			alert('Booh! Wrong credentials, try again!');
+			showMeYourJqXHR('When loginform fails', jqXHR);
+			showMeYourCookies('When loginform fails');
+
+			console.error('Booh! Wrong credentials, try again!');
 		});
 	});
 });

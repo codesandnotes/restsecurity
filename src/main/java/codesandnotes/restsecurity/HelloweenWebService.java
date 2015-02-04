@@ -20,6 +20,13 @@ public class HelloweenWebService {
 				new HelloweenResponse("Happy Halloween, " + principal.getName() + "!"), HttpStatus.OK);
 	}
 
+	@RequestMapping(value = "/hellopost", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<HelloweenResponse> helloPost(Principal principal) {
+
+		return new ResponseEntity<HelloweenResponse>(
+			new HelloweenResponse("Happy posting, " + principal.getName() + "!"), HttpStatus.OK);
+	}
+
 	public static class HelloweenResponse {
 		private String message;
 		public HelloweenResponse(String message) {
